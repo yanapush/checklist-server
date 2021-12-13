@@ -1,0 +1,11 @@
+package com.yanapush.server.checklistserver.dao;
+
+import com.yanapush.server.checklistserver.entity.Role;
+import com.yanapush.server.checklistserver.entity.User;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.List;
+
+public interface UserRepository extends JpaRepository<User, Integer> {
+    List<User> getByRole(Role byId);
+}
