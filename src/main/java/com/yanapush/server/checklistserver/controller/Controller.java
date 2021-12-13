@@ -15,6 +15,12 @@ public class Controller {
     @Autowired
     private Service service;
 
+    @RequestMapping("/")
+    @ResponseBody
+    String home() {
+        return "Hello World!";
+    }
+
     @GetMapping("/tasks/{userid}")
     public List<Task> showUsersTask(@PathVariable int userid) {
         return service.getTasksByRole(service.getUser(userid).getRole());
