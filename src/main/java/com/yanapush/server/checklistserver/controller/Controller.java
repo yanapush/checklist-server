@@ -34,6 +34,11 @@ public class Controller {
         return role;
     }
 
+    @GetMapping("/{password}")
+    public Role showRoleByPassword(@PathVariable int password) {
+        return service.getUserByPassword(password).getRole();
+    }
+
     @GetMapping("/roles")
     public List<Role> showRoles() {
         return service.getAllRoles();

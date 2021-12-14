@@ -38,7 +38,7 @@ public class Service implements MadeTaskService, TaskService, RoleService, UserS
 
     @Override
     public List<MadeTask> getMadeTasksByRole(int role) {
-        return madeTaskRepository.findAllByUserIn(userRepository.getByRole(roleRepository.getById(role)));
+        return madeTaskRepository.findAllByUserIn(userRepository.findByRole(roleRepository.getById(role)));
     }
 
     @Override
@@ -142,6 +142,11 @@ public class Service implements MadeTaskService, TaskService, RoleService, UserS
 
     @Override
     public List<User> getUsersByRole(int role) {
-        return userRepository.getByRole(roleRepository.getById(role));
+        return userRepository.findByRole(roleRepository.getById(role));
+    }
+
+    @Override
+    public User getUserByPassword(int password) {
+        return userRepository.findByPassword(password);
     }
 }

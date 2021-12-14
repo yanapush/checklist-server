@@ -11,6 +11,8 @@ public interface UserService {
 
     public User getUser(int id);
 
+    public User getUserByPassword(int password);
+
     public List<User> getUsersByRole(int role);
 
     public void addUser(int password, int role);
