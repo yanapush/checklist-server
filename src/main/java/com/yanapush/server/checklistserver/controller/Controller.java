@@ -1,6 +1,7 @@
 package com.yanapush.server.checklistserver.controller;
 
 import com.yanapush.server.checklistserver.entity.MadeTask;
+import com.yanapush.server.checklistserver.entity.Role;
 import com.yanapush.server.checklistserver.entity.Task;
 import com.yanapush.server.checklistserver.service.Service;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,12 @@ public class Controller {
     @GetMapping("/tasks/{userid}")
     public List<Task> showUsersTask(@PathVariable int userid) {
         return service.getTasksByRole(service.getUser(userid).getRole());
+    }
+
+
+    @GetMapping("/roles/{roleid}")
+    public Role showRole(@PathVariable int roleid) {
+        return service.getRole(roleid);
     }
 
     @PostMapping("/tasks")
