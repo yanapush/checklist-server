@@ -28,9 +28,14 @@ public class Controller {
     }
 
 
-    @GetMapping("/roles/{roleid}")
-    public Role showRole(@PathVariable int roleid) {
-        return service.getRole(roleid);
+    @GetMapping("/roles/{role_id}")
+    public Role showRole(@PathVariable int role_id) {
+        return service.getRole(role_id);
+    }
+
+    @GetMapping("/roles")
+    public List<Role> showRoles() {
+        return service.getAllRoles();
     }
 
     @PostMapping("/tasks")
