@@ -30,7 +30,8 @@ public class Controller {
 
     @GetMapping("/roles/{role_id}")
     public Role showRole(@PathVariable int role_id) {
-        return service.getRole(role_id);
+        Role role =  service.getRole(role_id);
+        return role;
     }
 
     @GetMapping("/roles")
