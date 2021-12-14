@@ -34,6 +34,11 @@ public class Controller {
         return service.getRole(role_id);
     }
 
+    @GetMapping("/user/{id}")
+    public User showUser(@PathVariable int id) {
+        return service.getUser(id);
+    }
+
     @GetMapping("/{password}")
     public User showUserByPassword(@PathVariable int password) {
         return service.getUserByPassword(password);
