@@ -3,6 +3,7 @@ package com.yanapush.server.checklistserver.controller;
 import com.yanapush.server.checklistserver.entity.MadeTask;
 import com.yanapush.server.checklistserver.entity.Role;
 import com.yanapush.server.checklistserver.entity.Task;
+import com.yanapush.server.checklistserver.entity.User;
 import com.yanapush.server.checklistserver.service.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -30,13 +31,12 @@ public class Controller {
 
     @GetMapping("/roles/{role_id}")
     public Role showRole(@PathVariable int role_id) {
-        Role role =  service.getRole(role_id);
-        return role;
+        return service.getRole(role_id);
     }
 
     @GetMapping("/{password}")
-    public Role showRoleByPassword(@PathVariable int password) {
-        return service.getUserByPassword(password).getRole();
+    public User showUserByPassword(@PathVariable int password) {
+        return service.getUserByPassword(password);
     }
 
     @GetMapping("/roles")
