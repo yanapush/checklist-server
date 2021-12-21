@@ -9,7 +9,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @Column(name = "made_today")
-    private boolean made_today = false;
+    private String last_update = "";
     @Column(unique = true)
     private int password;
     @ManyToOne
@@ -21,7 +21,6 @@ public class User {
     public User(int password, Role role) {
         this.password = password;
         this.role = role;
-        this.made_today = false;
     }
 
     public int getId() {
@@ -48,19 +47,19 @@ public class User {
         this.role = role;
     }
 
-    public boolean isMade_today() {
-        return made_today;
+    public String getLast_update() {
+        return last_update;
     }
 
-    public void setMade_today(boolean made_today) {
-        this.made_today = made_today;
+    public void setLast_update(String last_update) {
+        this.last_update = last_update;
     }
 
     @Override
     public String toString() {
         return "User{" +
                 "id=" + id +
-                ", made_today=" + made_today +
+                ", last_update=" + last_update +
                 ", password=" + password +
                 ", role=" + role +
                 '}';

@@ -126,7 +126,11 @@ public class Service implements MadeTaskService, TaskService, RoleService, UserS
         User user = userRepository.findByPassword(password);
         System.out.println(user);
         if (made_today) {
-            user.setMade_today(true);
+            java.util.Date dt = new java.util.Date();
+            java.text.SimpleDateFormat sdf =
+                    new java.text.SimpleDateFormat("yyyy-MM-dd");
+            String currentTime = sdf.format(dt);
+            user.setLast_update(currentTime);
         }
         System.out.println(user);
         userRepository.save(user);
