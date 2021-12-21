@@ -8,7 +8,6 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @Column(name = "made_today")
     private String last_update = "";
     @Column(unique = true)
     private int password;
