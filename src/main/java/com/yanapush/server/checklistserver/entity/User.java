@@ -8,7 +8,7 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String last_update = "";
+    private String last_update = "empty";
     @Column(unique = true)
     private int password;
     @ManyToOne
