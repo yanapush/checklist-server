@@ -55,4 +55,14 @@ public class User {
     public void setMade_today(boolean made_today) {
         this.made_today = made_today;
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", made_today=" + made_today +
+                ", password=" + password +
+                ", role=" + role +
+                '}';
+    }
 }

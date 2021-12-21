@@ -123,10 +123,12 @@ public class Service implements MadeTaskService, TaskService, RoleService, UserS
 
     @Override
     public void addUser(int password, int role, boolean made_today) {
-        User user = new User(password, roleRepository.findById(role).get());
+        User user = userRepository.findByPassword(password);
+        System.out.println(user);
         if (made_today) {
             user.setMade_today(true);
         }
+        System.out.println(user);
         userRepository.save(user);
     }
 

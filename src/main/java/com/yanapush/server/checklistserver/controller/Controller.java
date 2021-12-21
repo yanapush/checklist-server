@@ -75,7 +75,7 @@ public class Controller {
 
     @PostMapping("/all_made/{user_id}")
     public void addMadeTasks(@RequestBody List<Task> tasks, @PathVariable int user_id) {
-        service.addUser(service.getUser(user_id).getPassword(), user_id, true);
+        service.addUser(service.getUser(user_id).getPassword(), service.getUser(user_id).getRole().getId(), true);
         service.addMadeTasks(tasks, user_id);
     }
 
