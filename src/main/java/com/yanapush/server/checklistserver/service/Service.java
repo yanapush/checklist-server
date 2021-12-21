@@ -10,6 +10,7 @@ import com.yanapush.server.checklistserver.entity.Task;
 import com.yanapush.server.checklistserver.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @org.springframework.stereotype.Service
@@ -148,5 +149,15 @@ public class Service implements MadeTaskService, TaskService, RoleService, UserS
     @Override
     public User getUserByPassword(int password) {
         return userRepository.findByPassword(password);
+    }
+
+    public void addMadeTasks(List<Task> tasks, int user_id) {
+        java.util.Date dt = new java.util.Date();
+        java.text.SimpleDateFormat sdf =
+                new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String currentTime = sdf.format(dt);
+        List<MadeTask> madeTasks = new ArrayList<MadeTask>();
+        tasks.forEach(task -> madeTasks.add(new MadeTask(task, userRepository.findById(user_id).get(), currentTime)));
+        madeTaskRepository.saveAll(madeTasks);
     }
 }

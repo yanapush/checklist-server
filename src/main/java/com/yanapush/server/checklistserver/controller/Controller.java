@@ -73,7 +73,14 @@ public class Controller {
     public void addMadeTask(@RequestBody MadeTask task) {
         service.addMadeTask(task);
     }
-//
+
+    @PostMapping("/all_made/{user_id}")
+    public void addMadeTasks(@RequestBody List<Task> tasks, @PathVariable int user_id) {
+        service.addMadeTasks(tasks, user_id);
+    }
+
+
+    //
 //    @DeleteMapping("/made/{id}")
 //    public void deleteTask(@PathVariable int id) {
 //        service.deleteTask(id);
