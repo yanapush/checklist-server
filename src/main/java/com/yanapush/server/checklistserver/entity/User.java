@@ -8,6 +8,7 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    private boolean made_today;
     @Column(unique = true)
     private int password;
     @ManyToOne
@@ -16,9 +17,10 @@ public class User {
 
     public User() {}
 
-    public User(int password, Role role) {
+    public User(int password, Role role, boolean made_today) {
         this.password = password;
         this.role = role;
+        this.made_today = made_today;
     }
 
     public int getId() {
@@ -43,5 +45,13 @@ public class User {
 
     public void setRole(Role role) {
         this.role = role;
+    }
+
+    public boolean isMade_today() {
+        return made_today;
+    }
+
+    public void setMade_today(boolean made_today) {
+        this.made_today = made_today;
     }
 }

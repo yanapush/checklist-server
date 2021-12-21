@@ -28,7 +28,6 @@ public class Controller {
         return service.getTasksByRole(service.getUser(userid).getRole());
     }
 
-
     @GetMapping("/roles/{role_id}")
     public Role showRole(@PathVariable int role_id) {
         return service.getRole(role_id);
@@ -76,6 +75,7 @@ public class Controller {
 
     @PostMapping("/all_made/{user_id}")
     public void addMadeTasks(@RequestBody List<Task> tasks, @PathVariable int user_id) {
+        service.addUser(service.getUser(user_id).getPassword(), user_id, true);
         service.addMadeTasks(tasks, user_id);
     }
 

@@ -15,7 +15,7 @@ public interface UserService {
 
     public List<User> getUsersByRole(int role);
 
-    public void addUser(int password, int role);
+    public void addUser(int password, int role, boolean made_today);
 
     public void deleteUser(int id);
 }

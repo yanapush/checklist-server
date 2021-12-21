@@ -122,8 +122,8 @@ public class Service implements MadeTaskService, TaskService, RoleService, UserS
     }
 
     @Override
-    public void addUser(int password, int role) {
-        userRepository.save(new User(password, roleRepository.findById(role).get()));
+    public void addUser(int password, int role, boolean made_today) {
+        userRepository.save(new User(password, roleRepository.findById(role).get(),made_today ));
     }
 
     @Override
