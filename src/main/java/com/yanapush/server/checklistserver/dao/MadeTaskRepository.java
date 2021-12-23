@@ -19,4 +19,6 @@ public interface MadeTaskRepository extends JpaRepository<MadeTask, MadeTaskId> 
     void deleteAllByDate(String date);
 
     List<MadeTask> findAllByUserIn(List<User> users);
+
+    List<MadeTask> findAllByUserInAndDateBetween(List<User> user, String date, String date2);
 }

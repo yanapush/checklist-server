@@ -1,6 +1,7 @@
 package com.yanapush.server.checklistserver.entity;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 @Table
@@ -8,7 +9,7 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String last_update = "empty";
+    private String last_update = " ";
     @Column(unique = true)
     private int password;
     @ManyToOne
@@ -51,7 +52,12 @@ public class User {
     }
 
     public void setLast_update(String last_update) {
-        this.last_update = last_update;
+        if (last_update == null) {
+            this.last_update = " ";
+        } else {
+
+            this.last_update = last_update;
+        }
     }
 
     @Override

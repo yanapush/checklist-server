@@ -10,11 +10,16 @@ import com.yanapush.server.checklistserver.entity.Task;
 import com.yanapush.server.checklistserver.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.sql.DatabaseMetaData;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 @org.springframework.stereotype.Service
-public class Service implements MadeTaskService, TaskService, RoleService, UserService{
+public class Service implements MadeTaskService, TaskService, RoleService, UserService {
     @Autowired
     private MadeTaskRepository madeTaskRepository;
 
@@ -38,8 +43,24 @@ public class Service implements MadeTaskService, TaskService, RoleService, UserS
     }
 
     @Override
-    public List<MadeTask> getMadeTasksByRole(int role) {
-        return madeTaskRepository.findAllByUserIn(userRepository.findByRole(roleRepository.findById(role).get()));
+    public List<MadeTask> getMadeTasksByRole(int role, String date) {
+        Calendar cal = Calendar.getInstance();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            cal.setTime(sdf.parse(date));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        cal.add(Calendar.DAY_OF_MONTH, -1);
+        Date dt = cal.getTime();
+        String date1 = sdf.format(dt);
+        cal.add(Calendar.DAY_OF_MONTH, 2);
+        date = sdf.format(cal.getTime());
+        System.out.println(date1);
+        System.out.println(date);
+        List<MadeTask> list = madeTaskRepository.findAllByUserInAndDateBetween(userRepository.findAllByRole(roleRepository.findById(role).get()), date1, date);
+        System.out.println(list);
+        return list;
     }
 
     @Override

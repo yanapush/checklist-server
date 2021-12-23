@@ -12,7 +12,7 @@ public interface MadeTaskService {
 
     public MadeTask getMadeTask(int id, String date);
 
-    public List<MadeTask> getMadeTasksByRole(int role);
+    public List<MadeTask> getMadeTasksByRole(int role, String date);
 
     public List<MadeTask> getMadeTasksByUser(int user);
 

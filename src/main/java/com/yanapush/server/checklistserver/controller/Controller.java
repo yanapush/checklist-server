@@ -63,9 +63,10 @@ public class Controller {
         return service.getAllMadeTasks();
     }
 
-    @GetMapping("/made/{userid}")
-    public List<MadeTask> showUsersMadeTasks(@PathVariable int userid) {
-        return service.getMadeTasksByUser(userid);
+    @GetMapping("/made/{roleid}/{date}")
+    public List<MadeTask> showRolesMadeTasks(@PathVariable int roleid, @PathVariable String date) {
+        System.out.println(date);
+        return service.getMadeTasksByRole(roleid, date);
     }
 
     @PostMapping("/made")
